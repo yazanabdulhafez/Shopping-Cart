@@ -10,7 +10,7 @@ function loadCart() {
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
   cart = new Cart(cartItems);
   let numerOfcount = document.getElementById("itemCount");
-  numerOfcount.textContent= ' ' + cart.items.length;
+  numerOfcount.textContent = ' ' + cart.items.length;
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
@@ -21,7 +21,11 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() {
+  while (table.rows.length > 0) {
+    table.deleterow(0)
+  }
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
