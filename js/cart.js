@@ -32,10 +32,10 @@ function clearCart() {
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
-
+  let imgsrc;
   // TODO: Find the table body
   let tableBody = document.querySelector('tbody');
-  for (let i = 0; i < cart.items.length; i++) {
+  for (let i = 0; i < cart.items.length ; i++) {
     let tr = document.createElement('tr');
     tr.setAttribute('id', i)
     tableBody.appendChild(tr);
@@ -43,17 +43,21 @@ function showCart() {
     td.textContent = 'X'
     td.setAttribute('class', 'remove')
     tr.appendChild(td);
-
     let quintityTd = document.createElement('td')
     quintityTd.textContent = cart.items[i].quantity;
     tr.appendChild(quintityTd);
-
     let productTd = document.createElement('td')
     productTd.textContent = cart.items[i].product;
     tr.appendChild(productTd);
-
+   
     let imgTd = document.createElement('td')
-    imgTd.innerHTML = `<img src='${Product.allProducts[i].filePath}' style='width: 100px; height: 70px;'>`
+    for (let j = 0 ; j< Product.allProducts.length ; j++ ){
+     if (Product.allProducts[j].name === productTd.textContent){
+      imgsrc = Product.allProducts[j].filePath
+      break;
+     }
+    }
+    imgTd.innerHTML = `<img src='${imgsrc}' style='width: 100px; height: 70px;'>`
     tr.appendChild(imgTd);
 
   }

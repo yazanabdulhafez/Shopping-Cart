@@ -102,7 +102,6 @@ footer {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
 }
 
 .deck.col-2 .card {
@@ -168,7 +167,6 @@ label span {
   background: #f5f5f5;
   padding: 1.5em;
   box-shadow: 0 3px 2px #777;
-
 }
 
 
@@ -207,4 +205,3 @@ label span {
   color: red;
   cursor: pointer;
 }
-

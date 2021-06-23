@@ -31,7 +31,6 @@ function handleSubmit(event) {
   cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
-
 }
 
 // TODO: Add the selected item and quantity to the cart
@@ -56,9 +55,7 @@ function updateCartPreview() {
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
 let cartContents = document.getElementById('cartContents');
-
   let selectionOptions = document.getElementById('items');
-
   let selectedItem = selectionOptions.options[selectionOptions.selectedIndex].value;
   let selectedItemQuintity = document.getElementById('quantity').value;
 
