@@ -34,11 +34,11 @@ function showCart() {
 let tableBody = document.querySelector('tbody');
 for (let i = 0 ;i <cart.items.length; i++){
 let tr = document.createElement('tr');
-tr.setAttribute('id',i)
+tr.setAttribute('id',i) 
 tableBody.appendChild(tr);
 let td = document.createElement('td')
 td.textContent = 'X'
-td.setAttribute('Class','remove')
+td.setAttribute('class','remove')
 tr.appendChild(td);
 
 let quintityTd = document.createElement('td')
@@ -63,6 +63,12 @@ function removeItemFromCart(event) {
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
+if (event.target.textContent === 'X'){
+  cart.removeItem(event.target.parentElement.id);
+}
+localStorage.setItem('cart' ,JSON.stringify(cart.items));
+renderCart();
+
 
 }
 
