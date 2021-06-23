@@ -25,7 +25,7 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
-  event.preventDefaulult();
+  event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
   cart.saveToLocalStorage();
@@ -41,17 +41,33 @@ function addSelectedItemToCart() {
   // TODO: using those, add one item to the Cart
   let selectionOptions = document.getElementById('items');
   let selectedItem = selectionOptions.options[selectionOptions.selectedIndex].value;
-  let selectedItemQuintity = document.getElementById('quantity');
+  let selectedItemQuintity = document.getElementById('quantity').value;
   cart.addItem(selectedItem,selectedItemQuintity)
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() {
+  let numerOfcount = document.getElementById("itemCount");
+  numerOfcount.textContent= ' ' + cart.items.length;
+};
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
+let cartContents = document.getElementById('cartContents');
+
+  let selectionOptions = document.getElementById('items');
+
+  let selectedItem = selectionOptions.options[selectionOptions.selectedIndex].value;
+  let selectedItemQuintity = document.getElementById('quantity').value;
+
+  let ul = document.createElement('ul');
+  cartContents.appendChild(ul);
+  let li = document.createElement('li');
+  ul.appendChild(li);
+  li.textContent =  `${selectedItemQuintity} : ${selectedItem}`
+
 }
 
 // Set up the "submit" event listener on the form.
