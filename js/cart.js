@@ -11,6 +11,8 @@ function loadCart() {
   cart = new Cart(cartItems);
   let numerOfcount = document.getElementById("itemCount");
   numerOfcount.textContent = ' ' + cart.items.length;
+    
+ 
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
@@ -25,36 +27,43 @@ function clearCart() {
   while (table.rows.length > 0) {
     table.deleteRow(0)
   }
+  
 }
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
   // TODO: Find the table body
-let tableBody = document.querySelector('tbody');
-for (let i = 0 ;i <cart.items.length; i++){
-let tr = document.createElement('tr');
-tr.setAttribute('id',i) 
-tableBody.appendChild(tr);
-let td = document.createElement('td')
-td.textContent = 'X'
-td.setAttribute('class','remove')
-tr.appendChild(td);
+  let tableBody = document.querySelector('tbody');
+  for (let i = 0; i < cart.items.length; i++) {
+    let tr = document.createElement('tr');
+    tr.setAttribute('id', i)
+    tableBody.appendChild(tr);
+    let td = document.createElement('td')
+    td.textContent = 'X'
+    td.setAttribute('class', 'remove')
+    tr.appendChild(td);
 
-let quintityTd = document.createElement('td')
-quintityTd.textContent = cart.items[i].quantity;
-tr.appendChild(quintityTd);
+    let quintityTd = document.createElement('td')
+    quintityTd.textContent = cart.items[i].quantity;
+    tr.appendChild(quintityTd);
 
-let productTd = document.createElement('td')
-productTd.textContent = cart.items[i].product;
-tr.appendChild(productTd);
+    let productTd = document.createElement('td')
+    productTd.textContent = cart.items[i].product;
+    tr.appendChild(productTd);
 
+    let imgTd = document.createElement('td')
+    imgTd.innerHTML = `<img src='${Product.allProducts[i].filePath}' style='width: 100px; height: 70px;'>`
+    tr.appendChild(imgTd);
+
+  }
+ 
+  
 }
-}
-  // TODO: Iterate over the items in the cart
-  // TODO: Create a TR
-  // TODO: Create a TD for the delete link, quantity,  and the item
-  // TODO: Add the TR to the TBODY and each of the TD's to the TR
+// TODO: Iterate over the items in the cart
+// TODO: Create a TR
+// TODO: Create a TD for the delete link, quantity,  and the item
+// TODO: Add the TR to the TBODY and each of the TD's to the TR
 
 
 
@@ -63,11 +72,11 @@ function removeItemFromCart(event) {
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
-if (event.target.textContent === 'X'){
-  cart.removeItem(event.target.parentElement.id);
-}
-localStorage.setItem('cart' ,JSON.stringify(cart.items));
-renderCart();
+  if (event.target.textContent === 'X') {
+    cart.removeItem(event.target.parentElement.id);
+  }
+  localStorage.setItem('cart', JSON.stringify(cart.items));
+  renderCart();
 
 
 }
